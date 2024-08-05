@@ -1,0 +1,78 @@
+https://github.com/kylesturmer/Dijkstras-Algorithm is the link of repository
+
+Project Analysis: Maximetinu/Dijkstra-C
+Maximetinu/Dijkstra-C is an open-source project available on GitHub that implements Dijkstra's shortest path algorithm in C.
+
+Structure of the Project
+File Layout
+
+dijkstra.c: This file contains the main implementation of the Dijkstra's algorithm.
+graph.h: A header file that likely contains structure definitions and function prototypes.
+graph.c: This file probably contains the implementation of graph-related functions such as creating and manipulating the graph.
+main.c: This might be the entry point of the program, where the algorithm is executed with a given input graph.
+Key Functions in dijkstra.c
+
+*Dijkstra(Graph graph, int startVertex):
+
+This is the main function that executes Dijkstra's algorithm. It takes a graph and the starting vertex as parameters.
+Parameters:
+Graph *graph: A pointer to the graph structure.
+int startVertex: The index of the starting vertex.
+Functionality:
+Initializes the distances array with INFINITY.
+Sets the distance to the start vertex to 0.
+Uses a priority queue (or a similar structure) to repeatedly select the vertex with the smallest known distance.
+For each neighbor of the current vertex, calculates the tentative distance through the current vertex and updates if it's smaller.
+Continues this process until all vertices are processed.
+InitializeSingleSource(Graph graph, int startVertex, int dist, int prev):*
+
+Initializes the distance and previous arrays.
+Parameters:
+Graph *graph: A pointer to the graph structure.
+int startVertex: The index of the starting vertex.
+int* dist: An array to store the shortest distances from the start vertex.
+int* prev: An array to store the previous vertex in the path.
+Functionality:
+Sets distance of start vertex to 0 and all other vertices to INFINITY.
+Initializes the previous vertex array to -1 (indicating no predecessor).
+ExtractMin(int dist, bool visited, int verticesCount):**
+
+Finds the vertex with the minimum distance that hasn't been visited yet.
+Parameters:
+int* dist: An array of shortest distances.
+bool* visited: An array indicating whether a vertex has been visited.
+int verticesCount: Total number of vertices.
+Functionality:
+Iterates through the distance array to find the unvisited vertex with the smallest distance.
+Returns the index of this vertex.
+Relax(int u, int v, int weight, int dist, int prev):**
+
+Updates the distance to vertex v if a shorter path through vertex u is found.
+Parameters:
+int u: The current vertex.
+int v: The neighbor vertex.
+int weight: The weight of the edge between u and v.
+int* dist: An array of shortest distances.
+int* prev: An array to store the previous vertex in the path.
+Functionality:
+Checks if the path through u is shorter than the current known path and updates the distance and previous arrays accordingly.
+Graph-Related Functions in graph.c
+
+CreateGraph(int verticesCount):
+
+Allocates and initializes a new graph.
+Parameters:
+int verticesCount: The number of vertices in the graph.
+Functionality:
+Allocates memory for the graph and adjacency matrix.
+Initializes the adjacency matrix to INFINITY or 0 based on the absence or presence of edges.
+*AddEdge(Graph graph, int src, int dest, int weight):
+
+Adds an edge to the graph.
+Parameters:
+Graph *graph: A pointer to the graph structure.
+int src: The source vertex.
+int dest: The destination vertex.
+int weight: The weight of the edge.
+Functionality:
+Updates the adjacency matrix with the given weight for the edge from src to dest.
